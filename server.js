@@ -9,12 +9,12 @@ const { request } = require('http');
 const app = express();
 app.use(cors());
 app.use(express.json());
-  
+
 
 
 app.get('/profile', async (request, response) => {
     try {
-        const personalProfile = await profile.find({ userEmail: userEmail || userprofile: profileName });
+        const personalProfile = await profile.find({ userEmail: userEmail }||{profileName:profileName});
         response.json(personalProfile);
     } catch (error) {
         console.error('Error retrieving profile!:', error)
@@ -22,7 +22,7 @@ app.get('/profile', async (request, response) => {
 
 })
 
-app.get('/tournament', async(request, response) => {
+app.get('/tournament', async (request, response) => {
     try {
         const boardData = gameBoard.find()
         response.json(boardData)
