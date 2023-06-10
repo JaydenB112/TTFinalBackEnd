@@ -14,3 +14,5 @@ const roundCollection = [
     new gameRound({player1:'Joe',player2:'DJ',winner:'Joe',round:1}),
     new gameRound({player1:'Joe',player2:'Jay',winner:'Joe',round:2})
 ]
+
+module.exports = gameRound

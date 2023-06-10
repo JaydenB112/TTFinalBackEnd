@@ -25,3 +25,5 @@ const gameMaker = new mongoose.Schema({
         ]
 
 Here we've set up a basic outline on how the entire scope of the game will work, I decided to have total players represented as a number because I forsee an increment fucntion down the line. And I decided to put participants in an array to give our team access to methods to further manipulate the seeding.
+
+This will be further built on in future updates.
