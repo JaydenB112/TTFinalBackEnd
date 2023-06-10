@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-const gameRound = mongoose.model('gameRound',tourneyRound)
 
 const tourneyRound = new mongoose.Schema({
     player1:String,
@@ -9,6 +8,7 @@ const tourneyRound = new mongoose.Schema({
     round:Number
 })
 
+const gameRound = mongoose.model('gameRound',tourneyRound)
 const roundCollection = [
     new gameRound({player1:'Jay',player2:'Jared',winner:'Jay',round:1}),
     new gameRound({player1:'Joe',player2:'DJ',winner:'Joe',round:1}),

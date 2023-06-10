@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 
 
 
-const gameBoard = mongoose.model ('gameboard',gameMaker);
 // making da board schema
 
 const gameMaker = new mongoose.Schema({
@@ -11,6 +10,7 @@ const gameMaker = new mongoose.Schema({
     participants:Array,
     winner: String
 })
+const gameBoard = mongoose.model ('gameboard',gameMaker);
 
 // Making an array of past board games for easy accessibility and recreation
 const pastBoards = [
@@ -21,9 +21,9 @@ const pastBoards = [
 ]
 
 // Keeping a collection of upcoming boards to alert the user when tournaments happen
-const upcomingBoards = [
-    new gameBoard({gameName:''}),
-    new gameBoard({}),
-    new gameBoard({})
-]
+// const upcomingBoards = [
+//     new gameBoard({gameName:''}),
+//     new gameBoard({}),
+//     new gameBoard({})
+// ]
 module.exports = gameBoard
