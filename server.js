@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.get('/profile', async (request, response) => {
     try {
-        const personalProfile = await profile.find({ userEmail: userEmail }||{profileName:profileName});
+        const personalProfile = await profile.find();
         response.json(personalProfile);
     } catch (error) {
         console.error('Error retrieving profile!:', error)
@@ -24,7 +24,7 @@ app.get('/profile', async (request, response) => {
 
 app.get('/tournament', async (request, response) => {
     try {
-        const boardData = gameBoard.find()
+        const boardData = await gameBoard.find()
         response.json(boardData)
     } catch (error) {
         console.error('Error retrieiving your boards, try again later. :', error)
