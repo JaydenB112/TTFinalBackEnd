@@ -12,7 +12,7 @@ const gameMaker = new mongoose.Schema({
     winner: String
 })
 
-
+// Making an array of past board games for easy accessibility and recreation
 const pastBoards = [
     new gameBoard({gameName:'Dragon Ball Xenoverse Tourney!',totalPlayers: 10, participants:['Jay','Ren','KD','Carl','Josh','Yaj','Ner','DK','JC','Hsoj'], winner:'Jay'}),
     new gameBoard({gameName:'Basketball Tourney!',totalPlayers: 6, participants:['Jay','Ren','KD','Carl','Josh','Yaj'], winner:'Jay'}),
@@ -20,7 +20,7 @@ const pastBoards = [
     
 ]
 
-
+// Keeping a collection of upcoming boards to alert the user when tournaments happen
 const upcomingBoards = [
     new gameBoard({gameName:''}),
     new gameBoard({}),
