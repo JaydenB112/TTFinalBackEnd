@@ -6,11 +6,10 @@ const mongoose = require('mongoose')
 const profile = require('./profile');
 const gameBoard = require('./gameBoard')
 const gameRound = require('./gameRound')
-const { request } = require('http');
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+const PORT = process.env.PORT || 3001;
 
 // making get requests to each endpoint
 //getting individual profile data, for an individual profile page, and implentation into a tournament bracket
@@ -33,12 +32,15 @@ app.get('/tournament', async (request, response) => {
     }
 })
 // Focusing on each round specifically and breaking each bracket down into an object.
-app.get('/gameRound', async (request, response) =>{
+app.get('/gameRound', async (request, response) => {
     try {
         const roundData = await gameRound.find()
         response.json(roundData)
-    } catch(error){
-        console.error('Error retreiving the round data, plaease try again.',error)
+    } catch (error) {
+        console.error('Error retreiving the round data, plaease try again.', error)
     }
 })
 
+
+app.listen(PORT, () => 
+console.log(`Jay is no longer a sandwich. The app is listening on ${PORT}`));

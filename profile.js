@@ -21,4 +21,4 @@ new profile({Nickname:'Oooooweee', givenEmail:'ricknmawty@gmail.com', savedBoard
 
 // await profileBuild.insertMany(profileCollection);
 
-module.exports = profileBuild
+module.exports = profile
