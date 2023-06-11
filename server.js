@@ -9,7 +9,7 @@ const gameRound = require('./gameRound')
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+const PORT = process.env.PORT || 3001;
 
 // making get requests to each endpoint
 //getting individual profile data, for an individual profile page, and implentation into a tournament bracket
@@ -42,6 +42,5 @@ app.get('/gameRound', async (request, response) => {
 })
 
 
-app.listen(3001, () => {
-    console.log(`Server Running on ${process.env.PORT}`)
-})
+app.listen(PORT, () => 
+console.log(`Jay is no longer a sandwich. The app is listening on ${PORT}`));
