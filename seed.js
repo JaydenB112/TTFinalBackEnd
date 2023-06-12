@@ -29,7 +29,7 @@ async function seed() {
             new gameRound({player1:'Joe',player2:'Jay',winner:'Joe',round:2})
         ];
        await profile.insertMany(profileCollection);
-}seed();
+};
 
 
 

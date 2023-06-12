@@ -5,5 +5,16 @@
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "mongoose": "^7.2.2"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "ttfinalbackend",
+  "description": "const tourneyRound = new mongoose.Schema({\r         player1:String,\r         player2:String,\r         winner:String,\r         round:Number\r         })",
+  "version": "1.0.0",
+  "main": "gameBoard.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
