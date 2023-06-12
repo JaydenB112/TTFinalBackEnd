@@ -1,7 +1,8 @@
 const profile = require('profile'); // requiring profile model
 const gameBoard = require('gameBoard');
 const gameRound = require('gameRound');
-const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose')
+
 
 
 // Seed function establishing connection to mongo and inserting these arrays.
