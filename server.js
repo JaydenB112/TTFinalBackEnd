@@ -9,7 +9,7 @@ const gameRound = require('./gameRound')
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3001;
 
 
@@ -34,13 +34,25 @@ app.get('/boards', async (request, response) => {
     }
 })
 app.post('/boards', async (request, response) => {
-    const {adminEmail,gameName,totalPlayers, participants, winner} = request.body
+    const { adminEmail, gameName, totalPlayers, participants, winner } = request.body
     try {
-        const boardData = await gameBoard.create({adminEmail,gameName,totalPlayers,participants,winner})
+        const boardData = await gameBoard.create({ adminEmail, gameName, totalPlayers, participants, winner })
         response.json(boardData)
     } catch (error) {
         console.error('Error retrieiving your boards, try again later. :', error)
     }
+})
+
+app.delete('/boards/:id', async (request, response) => {
+    try {
+        await await mongoose.connect(process.env.MONGODB)
+        const id = request.params.id;
+        const result = await gameBoard.findOneAndDelete({ _id: id, });
+        response.send("Success")
+    } catch (error) {
+        console.log(error)
+    }
+
 })
 // Focusing on each round specifically and breaking each bracket down into an object.
 // app.get('/gameRound', async (request, response) => {
@@ -53,5 +65,5 @@ app.post('/boards', async (request, response) => {
 // })
 
 
-app.listen(PORT, () => 
-console.log(`I've beat the sandwich allegations. The app is listening on ${PORT}`));
+app.listen(PORT, () =>
+    console.log(`I've beat the sandwich allegations. The app is listening on ${PORT}`));
