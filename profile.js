@@ -24,7 +24,7 @@ async function seed() {
         new profile({ nickname: 'Rompultunsken', givenEmail: 'rompadomp@gmail.com', savedBoards: ['Board1', 'Board2', 'Board3'], recentBoards: ['Board1', 'Board2', 'Board3'], upcoming: '7-14-23' }),
         new profile({ nickname: 'Oooooweee', givenEmail: 'ricknmawty@gmail.com', savedBoards: ['Board1', 'Board2', 'Board3'], recentBoards: ['Board1', 'Board2', 'Board3'], upcoming: '8-14-23' })
     ]
-    await profile.insertMany(profileCollection);
+    // await profile.insertMany(profileCollection);
 }
 
 
