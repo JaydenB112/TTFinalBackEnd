@@ -23,7 +23,6 @@ const pastBoards = [
 mongoose.connect(process.env.MONGODB)
         .then(()=>{
             console.log('connected')
-            gameBoard.insertMany(pastBoards)
         })
 
 // Keeping a collection of upcoming boards to alert the user when tournaments happen
