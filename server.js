@@ -7,10 +7,31 @@ const profile = require('./profile');
 const gameBoard = require('./gameBoard')
 const gameRound = require('./gameRound')
 const app = express();
+const { requiresAuth } = require('express-openid-connect');
+const { auth } = require('express-openid-connect');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3001;
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'a long, randomly-generated string stored in env',
+  baseURL: 'http://localhost:3000',
+  clientID: 'FMl3QbVYOJHjz2t3QQQ7siiiHi1YGa8O',
+  issuerBaseURL: 'https://dev-ut6ajxmaug8bocvp.us.auth0.com'
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// req.isAuthenticated is provided from the auth router
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
+
+
 
 
 // making get requests to each endpoint
@@ -24,6 +45,11 @@ app.get('/profile', async (request, response) => {
     }
 
 })
+
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
+
 app.post('/profile', async (request, response) => {
     const { nickname, givenEmail, savedBoards, recentBoards, upcoming } = request.body
     try {
