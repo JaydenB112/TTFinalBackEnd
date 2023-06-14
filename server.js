@@ -72,6 +72,7 @@ app.delete('/profile/:id', async (request, response) => {
 
 })
 app.post('/profile/:id',async(request,respone) => {
+    const {nickname, givenEmail, savedBoards, recentBoards, upcoming} = request.body
     try {
         await mongoose.connect(process.env.MONGODB)
         const id = request.params.id;
@@ -111,12 +112,13 @@ app.delete('/boards/:id', async (request, response) => {
         const result = await gameBoard.findOneAndDelete({ _id: id, });
         response.send("Success")
     } catch (error) {
-        console.log(error)
+        response.json({message:error.message})
     }
 
 })
 
 app.put('/boards/:id', async (request,response) => {
+    const {adminEmail, gameName, totalPlayers, participants, winner} = request.body 
     try {
         await mongoose.connect(process.env.MONGODB)
         const id = request.params.id;
@@ -124,10 +126,10 @@ app.put('/boards/:id', async (request,response) => {
           { adminEmail:adminEmail, gameName:gameName, totalPlayers:totalPlayers, participants:participants, winner:winner },
           { new: true }
         );
-          const boardsWithUpdate = await boards.find({});
+          const boardsWithUpdate = await gameBoard.find({});
           response.send(boardsWithUpdate);
       }catch(error){
-        
+        response.json({message:error.message})
       }
 })
 // Focusing on each round specifically and breaking each bracket down into an object.

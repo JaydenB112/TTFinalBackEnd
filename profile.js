@@ -16,7 +16,7 @@ async function seed() {
     mongoose.connect(process.env.MONGODB)
         .then(() => {
             console.log('connected')
-            // profile.insertMany(profileBuild);
+            profile.insertMany(profileBuild);
         })
 
     const profileCollection = [
