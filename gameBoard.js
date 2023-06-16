@@ -23,7 +23,7 @@ async function boardSeed() {
     await mongoose.connect(process.env.MONGODB)
         .then(() => {
             console.log('connected')
-            // gameBoard.insertMany(pastBoards)
+            //gameBoard.insertMany(pastBoards)
         })
         .finally(() => {
             mongoose.disconnect

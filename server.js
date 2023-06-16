@@ -75,7 +75,7 @@ app.delete('/profile/:id', async (request, response) => {
         const id = request.params.id;
         const result = await profile.findOneAndDelete({ _id: id, });
         response.send("Success")
-    } catch (error) {
+    } catch (500) {
         console.log(error)
     }
 
